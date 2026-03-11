@@ -1,5 +1,8 @@
 package com.example.demo_qr.controller;
 
+import java.sql.Date;
+
+import org.apache.commons.logging.Log;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,6 +31,9 @@ public class QRController {
             @RequestParam(defaultValue = "300") int width,
             @RequestParam(defaultValue = "300") int height) {
         try {
+
+            System.out.println("Generating QR code for ID: " + id  + Date.valueOf(java.time.LocalDate.now()) + " at: " + java.time.LocalTime.now());
+            
             byte[] qrCode = qrService.generateQRCode(id, width, height);
 
             HttpHeaders headers = new HttpHeaders();
